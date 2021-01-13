@@ -1,0 +1,96 @@
+<!-- Banner Topo -->
+<section class="jumbotron">
+    <button type="button" class="btn btn-primary inscrevase">Inscreva-se</button>
+    <div class="container">
+        <div class="col-md-8 text-left">
+            <h1>A Unifacisa volta às aulas cheia de novidades para você, que é especial para nós.</h1>
+            <h2>Um novo layout, uma nova estrutura das informações para você.</h2>
+        </div>
+    </div>
+</section>
+
+<!-- Sessão Financiamento -->
+<section id="financiamento" class="financiamento">
+    <div class="container">
+        <h1>Conheça nossos financiamentos, créditos universitários e bolsas de estudos.</h1>
+        <button type="button" class="btn btn-primary">Saiba como</button>
+    </div>
+</section>
+
+<!-- Sessão Notícias/Eventos -->
+<section id="noticia" class="noticia">
+    <div class="container">
+        <div class="row">
+            <h1>Acontece na Unifacisa</h1>
+
+            <div class="col-md-8">
+                <div *ngFor="let post of posts$ | async" class="col-xs-6 col-sm-6 col-md-4 no-padding-left">
+                    <a class="link-not" href="./noticia/{{ post.slug }}">
+                        <div class="box-not">
+                            <!-- sizes['full'] é qualquer tamanho, sizes['thumbnail'], sizes['medium'] e sizes['larg'] -->
+                            <img class="img-responsive img-post" [src]="post['_embedded']['wp:featuredmedia'][0]['media_details'].sizes['full'].source_url">
+                            <p>{{ post.date_gmt | date }}</p>
+                            <h3>{{ post.title.rendered }}</h3>
+                            <!-- <h3 class="noticia" [innerHTML]="post.excerpt.rendered"></h3> -->
+                        </div>
+                    </a>
+                </div>
+                <a [routerLink]="['/noticias']">
+                    <button class="btn btn-primary btn-block">Todas as Notícias</button>
+                </a>
+            </div>
+
+            <div class="col-md-4">
+                <div class="box-evento">
+                    <h2>Eventos</h2>
+                    <div *ngFor="let event of eventos$ | async">
+                        <a class="link-not" href="./evento/{{ event.slug }}">
+                            <span>{{ event.date_gmt | date }}</span>
+                            <h3>{{ event.title.rendered }}</h3>
+                            <hr>
+                        </a>
+                    </div>
+                    <a [routerLink]="['/eventos']">
+                        <button class="btn btn-primary center-block">Todos os Eventos</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Sessão vídeo institucional -->
+<section id="video" class="video">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5">
+                <h1><span>Conheça</span> a Unifacisa</h1>
+                <h2>Melhor Centro Universitário Norte/Nordeste, segundo o MEC</h2>
+
+                <div class="col-md-3 col-md-offset-9">
+                    <hr>
+                </div>
+
+                <div class="col-md-4">
+                    <a href="#" class="btn btn-block btn-primary" role="button">Quem
+                        <br>Somos</a>
+                </div>
+                <div class="col-md-4">
+                    <a href="#" class="btn btn-block btn-primary" role="button">Agende
+                        <br>Uma Visita</a>
+                </div>
+                <div class="col-md-4">
+                    <a href="#" class="btn btn-block btn-primary" role="button">Calendário
+                        <br>Acadêmico</a>
+                </div>
+                <br>
+            </div>
+            <div class="col-md-6 col-md-offset-1">
+                <div class="embed-responsive embed-responsive-16by9">
+                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/chaxFz_8cY8?rel=0" frameborder="0" allow="autoplay; encrypted-media"
+                        allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
