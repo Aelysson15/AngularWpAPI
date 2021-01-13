@@ -1,0 +1,44 @@
+<!-- Banner Topo -->
+<div class="jumbotron geral">
+  <button type="button" class="btn btn-primary inscrevase">Inscreva-se</button>
+  <div class="container">
+    <h1>Notícias</h1>
+
+    <hr style="width: 50%; margin: 60px auto;">
+
+    <p>Notícias...</p>
+  </div>
+</div>
+
+<!-- Sessão Notícias -->
+<section id="documentos" class="documentos">
+  <div class="container" ng-controller="PaginationCtrl">
+    <br>
+    <div class="row">
+      <!-- <div class="col-xs-12 col-md-12" *ngFor="let post of eventos$ | async"> para página de eventos-->
+      <div class="col-xs-12 col-md-12" *ngFor="let post of all$ | async">
+        <article>
+          <div class="col-md-1">
+            <img class="img-responsive center-block" src="assets/imgs/icons-flat/file.png" alt="Documento" />
+          </div>
+          <div class="col-md-11">
+            <p>{{ post.date | date: "longDate" }}</p>
+            <a href="./noticia/{{ post.slug }}">
+              <h3>{{ post.title.rendered }}</h3>
+            </a>
+          </div>
+        </article>
+
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-md-6">
+        <a href="#" ng-click="paginate.prev()">Anteriores</a>
+      </div>
+      <div class="col-md-6 text-right">
+        <a href="#" ng-click="paginate.next()">Próximos</a>
+      </div>
+    </div>
+  </div>
+</section>
